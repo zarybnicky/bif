@@ -1,0 +1,248 @@
+% Created 2020-03-19 Thu 12:05
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\author{Jakub Zárybnický (xzaryb00@stud.fit.vutbr.cz)}
+\date{\today}
+\title{Zarovnání sekvencí}
+\hypersetup{
+ pdfauthor={Jakub Zárybnický (xzaryb00@stud.fit.vutbr.cz)},
+ pdftitle={Zarovnání sekvencí},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.1.9)}, 
+ pdflang={Czech}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Dotlet}
+\label{sec:org8fee185}
+Seznamte se s programem \href{https://dotlet.vital-it.ch/}{Dotlet}. Zadejte programu různé (např. náhodné) vstupní
+sekvence (\href{http://www.bioinformatics.org/sms2/random\_dna.html}{nukleotidů} / \href{http://www.bioinformatics.org/sms2/random\_protein.html}{aminokyselinami}) a vyzkoušejte si vliv vstupních
+parametrů (jako jsou typ skórovací matice nebo velikost posuvného okýnka) na
+výsledek dotplot grafu.
+
+\subsection{Region s nízkou složitostí}
+\label{sec:orga6c95d3}
+Tento příklad ukazuje vliv regionu s nízkou složitostí na výsledek dotplot
+grafu.
+
+\begin{enumerate}
+\item Jako vstupní sekvenci použijte antigenu \href{data/dotlet\_lowcomp.txt}{Plasmodium falciparum} (parazit
+způsobující malárii) a zarovnejte ji vůči sobě samé.
+\item Zvolte matici Blosum45 a velikost okýnka 15.
+\item Spusťte výpočet a upravte si světlost výsledného grafu např. na -40 a +40
+(posuvníky pod histogramem).
+\item Ve výsledném grafu by jste měli spatřit tmavou oblast odpovídající sekvenci
+identických znaků. Přemístěním kurzoru do tmavé oblasti se vám objeví ve
+spodní části okna podrobnější výpis sekvence.
+\end{enumerate}
+
+\emph{Otázky:}
+
+\begin{itemize}
+\item Jak dlouhá a z jakých znaků se skládá uvedená oblast?
+\begin{itemize}
+\item 191-225, znaky S
+\end{itemize}
+\end{itemize}
+
+\subsection{Opakování}
+\label{sec:orgf619ef6}
+Tento příklad ukazuje zajímavé vlastnosti, kterých si můžete všimnout
+při zarovnání sekvence oproti sobě samé.
+
+\begin{enumerate}
+\item Jako vstupní sekvenci použijte \href{data/dotlet\_rep.txt}{SLIT protein} Drosophila melanogaster (vinná
+muška).
+\item Zvolte matici Blosum62 a velikost okýnka 15.
+\item Spusťte výpočet a upravte si světlost výsledného grafu např. na 0 a +90.
+\item Ve výsledném grafu by jste měli spatřit dva shluky, jeden tvořený z delších a
+druhý z kratších opakujících se podřetězců (zkráceně opakování).
+\end{enumerate}
+
+\emph{Otázky:}
+\begin{itemize}
+\item Jak v dotplot grafu poznáte opakování?
+\begin{itemize}
+\item Krátké (symetrické?) diagonální pruhy i mimo hlavní diagonálu
+\end{itemize}
+\item Kolik jste napočítali delších a kolik kratších opakování?
+\begin{itemize}
+\item Pokud počítám jen dolní trojúhelníkovou matici, tak 12 regionů s
+několikanásobným opakováním (krátké diagonální čáry)
+\item Delších opakování bych z diagramu napočítal čtyři, ale tam záleží kritériích
+opakování.
+\end{itemize}
+\end{itemize}
+
+\section{Dynamické programování}
+\label{sec:orga86e45f}
+\subsection{Míra identity u náhodných biologických sekvencí}
+\label{sec:org6549d52}
+\begin{enumerate}
+\item Vytvořte si 2 náhodné sekvence \href{http://www.bioinformatics.org/sms2/random\_dna.html}{nukleotidů} a \href{http://www.bioinformatics.org/sms2/random\_protein.html}{aminokyselinami}.
+\item Dále budeme pracovat s online nástroji pro globální (\href{https://www.ebi.ac.uk/Tools/psa/emboss\_needle/nucleotide.html}{Needle Nucl} a \href{https://www.ebi.ac.uk/Tools/psa/emboss\_needle/}{Needle
+Prot}) a lokální (\href{https://www.ebi.ac.uk/Tools/psa/lalign/nucleotide.html}{LALIGN Nucl} a \href{https://www.ebi.ac.uk/Tools/psa/lalign/}{LALIGN Prot} ) zarovnání
+nukleotidových/aminokyselinových sekvencí.
+\item Pomocí nástrojů Needle resp. LALIGN vykonajte zarovnání vybraných
+nukleotidových/aminokyselinových sekvencí. Při zarovnávání aminokyselinových
+sekvencí zvolte matici BLOSUM50. Jinak ponechte původní nastavení. (LALIGN
+nabízí i pěkný grafický výstup v záložce \emph{Visual Output})
+\item Sledujte hodnoty vyjadřující míru identity (Needle) a parametr E (pouze u
+LALIGN).
+\end{enumerate}
+
+\emph{Otázky:}
+\begin{itemize}
+\item Co vyjadřuje parametr E?
+\begin{itemize}
+\item počet výskytů takové shody u N náhodných sekvencí pro E(N).
+\end{itemize}
+\item Jaké míry identity a parametru E je obvykle dosahováno u náhodných
+nukleotidových sekvencí?
+\begin{itemize}
+\item Identita 0.3 globálně
+\item Identita 0.3, E 1 pro náhodné shody v podsekvencích
+\end{itemize}
+\item Jaké míry identity a parametru E je obvykle dosahováno u náhodných
+sekvencí aminokyselin?
+\begin{itemize}
+\item Identita 0.15 globálně
+\item Identita 0.3, E 1 pro náhodné shody v podsekvencích
+\end{itemize}
+\end{itemize}
+
+\subsection{Objevení podobnosti mezi onkogeny}
+\label{sec:org6a846df}
+Russell Doolittle byl průkopníkem v oblasti algoritmů pro analýzu sekvencí v
+druhé polovině 70 a první polovině 80 let. Doolittle používal tehdejší databáze
+biologických sekvencí pro své experimenty s geny a hledání jejich funkce na
+základě podobnosti. V následujícím cvičení si zopakujeme kroky, které Doolittle
+provedl při objevu funkce \textbf{v-mos} onkogenu viru \emph{Moloney Murine Sarcoma}. Ne dlouho
+poté, co byl nasekvenován v-mos v Salk Institutu, studovala skupina vědců vztah
+mezi \textbf{v-src} onkogen viru \emph{Rous Sarcoma} a v-mos onkogenu. První pokusy o hledání
+podobnosti však dopadly neúspěšně.
+
+\begin{enumerate}
+\item Pro tenhle úkol budeme potřebovat nástroj \href{https://www.ebi.ac.uk/Tools/st/emboss\_sixpack/}{Sixpack} pro překlad nukleotidové
+sekvence na aminokyselinovou.
+\item S použitím nástrojů Needle resp. LALIGN pro globální resp. lokální zarovnání
+analyzujte podobnost obou nukleotidových sekvencí \href{data/vmos.fasta}{vmos.fasta} a \href{data/src.fasta}{src.fasta}.
+\item Na základě míry identity a parametru E zhodnoťte výsledky zarovnání.
+\item Dále použijte nástroj Sixpack který dokáže přeložit sekvenci nukleotidů na
+aminokyseliny pro překlad sekvencí \emph{v-mos} a \emph{v-src}.  Ponechte původní
+nastavení. Všimněte si, že nástroj Sixpack provede celkem 6 překladů s
+ohledem na různou počáteční pozici překladu fram-u. Tři překlady provede s
+přímou sekvencí a tři překlady provede s komplementární a reverzovanou
+sekvencí (simulace komplementárního vlákna DNA).
+\item Z šesti překladů obou sekvencí vyberte takové, které by mohli vést na co
+největší míru podobnosti (říďte se tabulkou na konci výstupu, výsledné
+přeložené sekvence najdete v záložce \emph{Tool Output}).
+\item Proveďte globální a lokální zarovnání přeložených sekvencí pomocí nástrojů
+Needle/LALIGN.
+\item Na základě míry identity a parametru E zhodnoťte výsledky zarovnání.
+\item Pokud si nejste jisti, zda jste vybrali správné fram-y v bodě 5, vyberte jiné
+a opakujte experiment. Nápověda: hledáme takové posuny, které vedou na
+překlad jednoho genu v protein (jeden start/stop kodon)
+\end{enumerate}
+
+\emph{Otázky:}
+\begin{itemize}
+\item Jaké fram-y jste vybrali?
+\begin{itemize}
+\item Frame 1 v obou případech - jediné souvislé fram-y bez více ORF
+\end{itemize}
+\item Jak hodnotíte výsledky zarovnání nukleotidových sekvencí?
+\begin{itemize}
+\item Nepříliš přesvědčivé
+\end{itemize}
+\item Nalezli jste lepší zarovnání v případě přeložených sekvencí?
+\begin{itemize}
+\item Lokální zarovnání o délce 582 s \(E(1) = 4.6e-07\)
+\item Globální zarovnání se skórem 241
+\end{itemize}
+\end{itemize}
+
+\section{BLAST}
+\label{sec:org3667f81}
+\subsection{Hledání původu DinoDNA}
+\label{sec:org3f17fa2}
+\begin{enumerate}
+\item Film Michael Crichtona o klonování dinosaurů, Jurský park, ukazuje domnělou
+DNA sekvenci dinosaura. Identifikujte skutečný zdroj \href{data/dino\_dna1.fasta}{této} DNA sekvence s
+využitím programu \href{https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn\&PAGE\_TYPE=BlastSearch\&LINK\_LOC=blasthome}{BLAST} a NCBI databáze všech nukleotidů \textbf{nr}.
+\item Vědec NCBI Mark Boguski však upozornil na to, že jeho sekvence byla určitě
+kontaminovaná a zásobil Michaela Crichtona lepší sekvencí, pro pokračování
+tohoto filmu z názvem The Lost World. Identifikujte zdroj \href{data/dino\_dna2.fasta}{této} sekvence.
+\end{enumerate}
+
+\emph{Otázky:}
+\begin{itemize}
+\item Nalezl Mark lepší sekvenci než Michael? Proč?
+\begin{enumerate}
+\item Michael - 99\% se shoduje s "Escherichia coli strain Mach1 plasmid pSS1129, complete
+sequence" s \(E(1) = 3e-117\)
+\item Mark - 66\% se shoduje s "Gallus gallus GATA binding protein 1" s \(E(1) = 0\) (úplná shoda)
+\end{enumerate}
+\item Mark zabudoval do své sekvence také své jméno MARK. Nalezněte toto jméno v
+sekvenci.
+\begin{itemize}
+\item Je součástí "DinoDNA\(_{\text{1}}\)\(_{\text{ORF1}}\)  Translation of DinoDNA in frame 1, ORF 1,
+threshold 1, 358aa", polovina třetího řádku:
+\end{itemize}
+\end{itemize}
+\begin{minted}[]{text}
+>Translation of DinoDNA in frame 1, ORF 1, threshold 1, 358aa
+EFRKRARDKSWHQIQLEIRTDVWQLPQRIHWKCITYPMGAMEFVALGGPDAGSPTPFPDE
+AGAFLGLGGGERTEAGGLLASYPPSGRVSLVPWADTGTLGTPQWVPPATQMEPPHYLELL
+QPPRGSPPHPSSGPLLPLSSGPPPCEARECVMARKNCGATATPLWRRDGTGHYLCNWASA
+CGLYHRLNGQNRPLIRPKKRLLVSKRAGTVCSHERENCQTSTTTLWRRSPMGDPVCNNIH
+ACGLYYKLHQVNRPLTMRKDGIQTRNRKVSSKGKKRRPPGGGNPSATAGGGAPMGGGGDP
+SMPPPPPPPAAAPPQSDALYALGPVVLSGHFLPFGNSGGFFGGGAGGYTAPPGLSPQI
+\end{minted}
+
+\subsection{Hledání komplementárních sekvencí}
+\label{sec:org314f798}
+\begin{enumerate}
+\item S využitím databáze \href{http://www.ncbi.nlm.nih.gov/genbank/}{NCBI GenBank} si stáhněte sekvenci nukleotidů libovolného
+lidského genu napr. KRAS (postačí prvních 1000 znaků genu)
+\item S využitím následujícího webového \href{http://www.bioinformatics.org/sms/rev\_comp.html}{nástroje} si ke vstupnímu genu vytvořte:
+\begin{itemize}
+\item reverzní sekvenci,
+\item komplementární sekvenci,
+\item reverzní+komplementární sekvenci.
+\end{itemize}
+
+\item S využitím \href{http://blast.ncbi.nlm.nih.gov/Blast.cgi}{BLASTu} vyhledejte v \textbf{nr} databázi všechny výskyty vytvořených
+sekvencí
+\end{enumerate}
+
+\emph{Otázky:}
+\begin{itemize}
+\item Shodují se výsledky pro všechny alternativy vstupní sekvence? Zdůvodněte proč.
+\begin{itemize}
+\item Výsledky BLAST pro původní a komplementární sekvence (ať už reverzní nebo
+ne) se liší. BLAST zřejmě hledá pouze sekvence, ať už reverzní nebo ne. Na
+začátku sekvence KRAS je komplementární řetězec nosný pro GTPase, kdežto
+původní nekomplementární řetězec nosný není a obsahuje pouze promotor genu
+OATP-B.
+\end{itemize}
+\end{itemize}
+\end{document}

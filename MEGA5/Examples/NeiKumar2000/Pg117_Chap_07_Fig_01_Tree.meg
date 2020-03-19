@@ -1,0 +1,18 @@
+#MEGA
+!Title  tree of 6 seqs in fig 7.1;
+!Format NTaxa=6 NTrees=1;
+
+[
+M. Nei and S. Kumar (2000) Molecular Evolution and Phylogenetics.  
+Oxford University Press. New York.
+Tree for Example 7.1.
+]
+
+[1] #1
+[2] #2
+[3] #3
+[4] #4
+[5] #5
+[6] #6
+
+Tree=(((1,2),((3,4),5)),6);

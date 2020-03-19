@@ -1,0 +1,94 @@
+#+TITLE: Hledání genů
+#+AUTHOR: Jakub Zárybnický (xzaryb00@stud.fit.vutbr.cz)
+#+LANGUAGE: czech
+#+LATEX_HEADER: \usepackage{minted}
+#+OPTIONS: toc:nil
+
+* Identifikace otevřeného čtecího rámce
+Prostřednictvím nástroje [[https://www.ncbi.nlm.nih.gov/orffinder/][ORF Finder]] vyhledejte nejdelší otevřený rámec (ORF) na
+genomové sekvenci bakteriofágu 3A ze souboru [[./bacteriophage_3A.txt][bacteriophage_3A.txt]]. Protein
+kódovaný daným ORF porovnejte prostřednictvím blastp s proteiny dostupnými v
+databázi nr.
+
+1. Určete nejdelší ORF (nejdelší ORF obvykle bývá ten správný).
+   1. 99% shoda s ORF001 Staphylococcus aureus
+2. Je sekvence genu odpovídající nejdelšímu ORF kompletní (odhadněte na základě
+   analýzy blastp - lze spustit přímo z nástroje ORF Finder)?
+   1. E = 0 pro alignment s NC_007053.1 (9430-10989)
+
+* Změna otevřeného čtecího rámce vlivem mutace - Single nucleotide polymorphism (SNP)
+Mutace protein-kódující sekvence může změnit otevřený čtecí rámec (vznik /
+poškození na start / stop kodónu). Jedním z mnoha příkladů může být varianta
+hemoglobinu nazývaná /Constant Spring/. Tato varianta byla poprvé objevena na
+Jamaice a od standardní varianty se liší svoji délkou. Více podrobností ohledně
+této mutace můžete prostudovat v databázi OMIM pod identifikátorem [[http://omim.org/entry/141850][141850]].
+
+1. Stáhněte z databáze GenBank standardní variantu nukleotidové sekvence
+   proteinu [[http://www.ncbi.nlm.nih.gov/nuccore/NM_000517.4][HBA2 homo sapiens - mRNA]] (stahujte celý záznam ve formátu
+   FASTA). Použijte nástroj [[https://www.ncbi.nlm.nih.gov/orffinder/][ORF Finder]] ke zjištění délky ORF.
+   1. nt=429, aa=142
+2. Stáhněte nukleotidovou sekvenci varianty hemoglobinu [[./constant_spring_rna.txt][Constant
+   Spring]]. Použijte nástroj [[https://www.ncbi.nlm.nih.gov/orffinder/][ORF Finder]] ke zjištění délky ORF.
+   1. nt=522, aa=173
+
+* Predikce genů založená na analýze sekvence a sekvenčních signálů
+Sekvenční analýza může poskytnout relevantní informace využitelné pro predikci
+genů. Pro řešení následujích úloh využijte sadu nástrojů zvanou [[http://emboss.bioinformatics.nl][EMBOSS
+toolbox]]. Experimentování provádějte, není-li uvedeno jinak, na nukleotidové
+sekvenci proteinu HBA2 ze souboru [[./protein_HBA2.fasta][protein_HBA2.fasta]]. Pro lehčí hledání odpovědí
+na níže uvedené otázky si přečtěte něco o [[https://cs.wikipedia.org/wiki/Methylace_DNA][methylaci DNA]] a [[https://en.wikipedia.org/wiki/CpG_site#CpG_islands][CPG ostrůvcích]].
+
+1. [[http://emboss.bioinformatics.nl/cgi-bin/emboss/compseq][CompSeq]]: spočítejte frekvenci výskytu jednotlivých dinukleotidů v
+   sekvenci. Má dinukleotid CG jinou než očekávanou frekvenci výskytu? Pokud
+   ano, zdůvodněte proč.
+   1. frekvence 3.91% je pouze 62.5% z očekávané 6.25%, CpG se (dle wiki) u
+      obratlovců vyskytuje méně z důvodu možné degradace cytosinu na thymin.
+2. [[http://emboss.bioinformatics.nl/cgi-bin/emboss/cpgplot][CpgPlot]]: Identifikujte oblasti CpG ostrůvků a vysvětlete, jak lze znalost o
+   těchto oblastech využít pro hledání genů.
+   1. V HBA2 se vyskytují tři regiony s CpG ostrůvky, na začátku, uprostřed a
+      cca v 75%. Dle wiki jsou CpG ostrůvky většinou následované začátkem genu
+3. [[http://emboss.bioinformatics.nl/cgi-bin/emboss/dreg][Dreg]]: Identifikujte polyadeninové signály v sekvenci [[http://www.ncbi.nlm.nih.gov/nuccore/NG_000006.1][NG_000006]] (stahujte celý
+   záznam ve formátu FASTA). Nejčastějšími polyadeninovými signály jsou AATAAA a
+   ATTAAA. Jak často se v sekvenci vyskytují?
+   1. Sekvence AATAAA celkem 39x
+   2. Sekvence ATTAAA celkem 13x
+
+* Identifikace strukturních genů pomocí aplikace GeneMark
+V části bakteriální sekvence [[./heliobacillus_mobilis.txt][Heliobacillus mobilis]] proveďte prostřednictvím
+aplikace [[http://exon.biology.gatech.edu/gmchoice.html][GeneMark]] vyhledání strukturních genů. Používejte výchozí nastavení
+vstupního formuláře, ve kterém změňte druh na "Bacillus_subtilis_168" (položka
+"Select Species").
+
+1. Kolik ORF bylo detekováno na přímém vlákně?
+   1. 15 ORF na přímém vlákně, 2 na komplementárním
+2. Lokalizujte ribozomální vazebná místa (RBS). Za konsensuální model pro E.Coli
+   je považována sekvence /AAGGAG/, která je umístěna typicky 4-12 nukleotidů před
+   start kodónem. Tato RBS najděte pomocí utility [[http://emboss.bioinformatics.nl/cgi-bin/emboss/dreg][Dreg]] z balíku
+   [[http://emboss.bioinformatics.nl][EMBOSS]]. Regulární výraz sestavte tak, že:
+
+   - na první pozici RBS může být A, C nebo G
+   - na druhé až páté pozici RBS může být pouze sekvence AGGA
+   - na šesté pozici RBS může být A nebo G
+   - mezera mezi RBS a start kodónem může být 4-12 nukleotidů
+
+   Jak vypadá Vámi použitý regulární výraz? Kolik jste našli odpovídajících
+   výskytů? Kolik z nich je relevantních (tj.  nacházejících se v blízkosti ORF
+   predikovaného pomocí GeneMark)?
+   1. [ACG]AGGA[AG].{4,12}ATG
+   2. 10 výskytů
+   3. pozice RBS na 582, 6188, 7126, 8821, 12869
+
+* Predikce operonů
+Operony jsou sekvencí nukleotidů, resp. řadou po sobě jdoucích genů v
+bakteriálním chromozomu, které mají společný promotor a jsou regulovány
+společným operátorem a exprimovány najednou. Tyto geny kódují většinou enzymy
+zapojené v jedné metabolické dráze.
+
+Predikujte operony nad bakteriální sekvencí [[./heliobacillus_mobilis.txt][Heliobacillus mobilis]] pomocí /40bp
+pravidla/: Pokud je intergenová vzdálenost dvojice nepřímo transkribovaných genů
+menší než 40 párů bází, potom je tato dvojice nazývaná operon.
+
+1. S využitím výstupu genové predikce GeneMarku z předchozí úlohy určete první
+   operon na přímém vlákně.
+   1. Pokud uvažuju pouze s výstupen GeneMark, tak je to 2081 (následují geny na
+      3381 a 4268).

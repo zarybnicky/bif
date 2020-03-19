@@ -1,0 +1,171 @@
+#+TITLE: Bioinformatické databáze
+#+AUTHOR: Jakub Zárybnický (xzaryb00@stud.fit.vutbr.cz)
+#+LATEX_HEADER: \usepackage{minted}
+
+
+* Hledání v databázích nukleotidových sekvencí
+Vyhledejte mRNA lidského genu beta-globinu (Homo sapiens hemoglobin, beta, HBB), který je součástí většího proteinu hemoglobinu. Použijte databázi GenBank. Určete a stáhněte kódující oblasti tohoto genu a sekvenci proteinu, který je tímto genem kódován.
+
+** Jaký přístupový kód má tento gen?
+GeneID 3043; ECYT6; CD113t-C
+** Určete kódující sekvenci genu beta-globin a stáhněte ji ve FASTA formátu.
+#+BEGIN_SRC text
+>NC_000011.10:5225464-5227071 Homo sapiens chromosome 11, GRCh38.p13 Primary Assembly
+TTGCAATGAAAATAAATGTTTTTTATTAGGCAGAATCCAGATGCTCAAGGCCCTTCATAATATCCCCCAG
+TTTAGTAGTTGGACTTAGGGAACAAAGGAACCTTTAATAGAAATTGGACAGCAAGAAAGCGAGCTTAGTG
+ATACTTGTGGGCCAGGGCATTAGCCACACCAGCCACCACTTTCTGATAGGCAGCCTGCACTGGTGGGGTG
+AATTCTTTGCCAAAGTGATGGGCCAGCACACAGACCAGCACGTTGCCCAGGAGCTGTGGGAGGAAGATAA
+GAGGTATGAACATGATTAGCAAAAGGGCCTAGCTTGGACTCAGAATAATCCAGCCTTATCCCAACCATAA
+AATAAAAGCAGAATGGTAGCTGGATTGTAGCTGCTATTAGCAATATGAAACCTCTTACATCAGTTACAAT
+TTATATGCAGAAATATTTATATGCAGAGATATTGCTATTGCCTTAACCCAGAAATTATCACTGTTATTCT
+TTAGAATGGTGCAAAGAGGCATGATACATTGTATCATTATTGCCCTGAAAGAAAGAGATTAGGGAAAGTA
+TTAGAAATAAGATAAACAAAAAAGTATATTAAAAGAAGAAAGCATTTTTTAAAATTACAAATGCAAAATT
+ACCCTGATTTGGTCAATATGTGTACACATATTAAAACATTACACTTTAACCCATAAATATGTATAATGAT
+TATGTATCAATTAAAAATAAAAGAAAATAAAGTAGGGAGATTATGAATATGCAAATAAGCACACATATAT
+TCCAAATAGTAATGTACTAGGCAGACTGTGTAAAGTTTTTTTTTAAGTTACTTAATGTATCTCAGAGATA
+TTTCCTTTTGTTATACACAATGTTAAGGCATTAAGTATAATAGTAAAAATTGCGGAGAAGAAAAAAAAAG
+AAAGCAAGAATTAAACAAAAGAAAACAATTGTTATGAACAGCAAATAAAAGAAACTAAAACGATCCTGAG
+ACTTCCACACTGATGCAATCATTCGTCTGTTTCCCATTCTAAACTGTACCCTGTTACTTATCCCCTTCCT
+ATGACATGAACTTAACCATAGAAAAGAAGGGGAAAGAAAACATCAAGCGTCCCATAGACTCACCCTGAAG
+TTCTCAGGATCCACGTGCAGCTTGTCACAGTGCAGCTCACTCAGTGTGGCAAAGGTGCCCTTGAGGTTGT
+CCAGGTGAGCCAGGCCATCACTAAAGGCACCGAGCACTTTCTTGCCATGAGCCTTCACCTTAGGGTTGCC
+CATAACAGCATCAGGAGTGGACAGATCCCCAAAGGACTCAAAGAACCTCTGGGTCCAAGGGTAGACCACC
+AGCAGCCTAAGGGTGGGAAAATAGACCAATAGGCAGAGAGAGTCAGTGCCTATCAGAAACCCAAGAGTCT
+TCTCTGTCTCCACATGCCCAGTTTCTATTGGTCTCCTTAAACCTGTCTTGTAACCTTGATACCAACCTGC
+CCAGGGCCTCACCACCAACTTCATCCACGTTCACCTTGCCCCACAGGGCAGTAACGGCAGACTTCTCCTC
+AGGAGTCAGATGCACCATGGTGTCTGTTTGAGGTTGCTAGTGAACACAGTTGTGTCAGAAGCAAATGT
+#+END_SRC
+** Jaký je přístupový kód proteinové sekvence kódované genem beta-globin?
+cd08925, P68871
+** Stáhněte sekvenci proteinu kódovaného genem beta-globin ve FASTA formátu.
+#+BEGIN_SRC text
+>sp|P68871|HBB_HUMAN Hemoglobin subunit beta OS=Homo sapiens OX=9606 GN=HBB PE=1 SV=2
+MVHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPK
+VKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFG
+KEFTPPVQAAYQKVVAGVANALAHKYH
+#+END_SRC
+** Stáhněte článek věnující se genetickému onemocnění beta-talasemie (beta-thalassemia), jenž je důsledkem mutace v lidském hemoglobinu.
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2234194/pdf/zpq1620.pdf
+
+* Hledání v databázích proteinových sekvencí
+Vyhledejte záznam o proteinu beta-globin (Homo sapiens hemoglobin, beta, HBB) v proteinové databázi UniProtKB/Swiss-Prot.
+
+** Jaký přístupový kód má tento protein?
+P68871
+** Z kolika aminokyselin je tento protein tvořen?
+146
+** Jakou funkci má tento protein?
+"Involved in oxygen transport from the lung to the various peripheral tissues."
+** Do jaké rodiny tento protein patří?
+" the pore-forming globin (globin) family"
+** Jaký efekt má mutace E7V?
+VAR_002863, "Hb S; at heterozygosity confers resistance to malaria", Sickle-cell anaemia
+** Stáhněte abstrakt článku popisujícího strukturu neokysličeného hemoglobinu s mutací způsobující srpkovitou anémii.
+A variant Hb \zeta{}2\beta{}2(s) that is formed from sickle hemoglobin (Hb S; \alpha{}2\beta{}2(s)) by exchanging adult \alpha{}-globin with embryonic \zeta{}-globin subunits shows promise as a therapeutic agent for sickle-cell disease (SCD). Hb \zeta{}2\beta{}2(s) inhibits the polymerization of deoxygenated Hb S in vitro and reverses characteristic features of SCD in vivo in mouse models of the disorder. When compared with either Hb S or with normal human adult Hb A (\alpha{}2\beta{}2), Hb \zeta{}2\beta{}2(s) exhibits atypical properties that include a high oxygen affinity, reduced cooperativity, a weak Bohr effect and blunted 2,3-diphosphoglycerate allostery. Here, the 1.95 Å resolution crystal structure of human Hb \zeta{}2\beta{}2(s) that was expressed in complex transgenic knockout mice and purified from their erythrocytes is presented. When fully liganded with carbon monoxide, Hb \zeta{}2\beta{}2(s) displays a central water cavity, a \zeta{}1-\beta{}(s)2 (or \zeta{}2-\beta{}(s)1) interface, intersubunit salt-bridge/hydrogen-bond interactions, C-terminal \beta{}His146 salt-bridge interactions, and a \beta{}-cleft, that are highly unusual for a relaxed hemoglobin structure and are more typical of a tense conformation. These quaternary tense-like features contrast with the tertiary relaxed-like conformations of the \zeta{}1\beta{}(s)1 dimer and the CD and FG corners, as well as the overall structures of the heme cavities. This crystallographic study provides insights into the altered oxygen-transport properties of Hb \zeta{}2\beta{}2(s) and, moreover, decouples tertiary- and quaternary-structural events that are critical to Hb ligand binding and allosteric function.
+** Zjistěte RS identifikátor pro mutaci E7V.
+rs334
+** Stáhněte sekvenci tohoto proteinu ve FASTA formátu.
+#+BEGIN_SRC text
+>sp|P68871|HBB_HUMAN Hemoglobin subunit beta OS=Homo sapiens OX=9606 GN=HBB PE=1 SV=2
+MVHLTPVEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPK
+VKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFG
+KEFTPPVQAAYQKVVAGVANALAHKYH
+#+END_SRC
+** Stáhněte z GenBank DNA sekvenci, která kóduje tento protein.
+#+BEGIN_SRC text
+>NC_000011.10:5226570-5228834 Homo sapiens chromosome 11, GRCh38.p13 Primary Assembly
+GACTCACCCTGAAGTTCTCAGGATCCACGTGCAGCTTGTCACAGTGCAGCTCACTCAGTGTGGCAAAGGT
+GCCCTTGAGGTTGTCCAGGTGAGCCAGGCCATCACTAAAGGCACCGAGCACTTTCTTGCCATGAGCCTTC
+ACCTTAGGGTTGCCCATAACAGCATCAGGAGTGGACAGATCCCCAAAGGACTCAAAGAACCTCTGGGTCC
+AAGGGTAGACCACCAGCAGCCTAAGGGTGGGAAAATAGACCAATAGGCAGAGAGAGTCAGTGCCTATCAG
+AAACCCAAGAGTCTTCTCTGTCTCCACATGCCCAGTTTCTATTGGTCTCCTTAAACCTGTCTTGTAACCT
+TGATACCAACCTGCCCAGGGCCTCACCACCAACTTCATCCACGTTCACCTTGCCCCACAGGGCAGTAACG
+GCAGACTTCTCCTCAGGAGTCAGATGCACCATGGTGTCTGTTTGAGGTTGCTAGTGAACACAGTTGTGTC
+AGAAGCAAATGTAAGCAATAGATGGCTCTGCCCTGACTTTTATGCCCAGCCCTGGCTCCTGCCCTCCCTG
+CTCCTGGGAGTAGATTGGCCAACCCTAGGGTGTGGCTCCACAGGGTGAGGTCTAAGTGATGACAGCCGTA
+CCTGTCCTTGGCTCTTCTGGCACTGGCTTAGGAGTTGGACTTCAAACCCTCAGCCCTCCCTCTAAGATAT
+ATCTCTTGGCCCCATACCATCAGTACAAATTGCTACTAAAAACATCCTCCTTTGCAAGTGTATTTACGTA
+ATATTTGGAATCACAGCTTGGTAAGCATATTGAAGATCGTTTTCCCAATTTTCTTATTACACAAATAAGA
+AGTTGATGCACTAAAAGTGGAAGAGTTTTGTCTACCATAATTCAGCTTTGGGATATGTAGATGGATCTCT
+TCCTGCGTCTCCAGAATATGCAAAATACTTACAGGACAGAATGGATGAAAACTCTACCTCGGTTCTAAGC
+ATATCTTCTCCTTATTTGGATTAAAACCTTCTGGTAAGAAAAGAAAAAATATATATATATATGTGTGTAT
+ATATACACACATACATATACATATATATGCATTCATTTGTTGTTGTTTTTCTTAATTTGCTCATGCATGC
+TAATAAATTATGTCTAAAAATAGAATAAATACAAATCAATGTGCTCTGTGCATTAGTTACTTATTAGGTT
+TTGGGAAACAAGAGATAAAAAACTAGAGACCTCTTAATGCAGTCAAAAATACAAATAAATAAAAAGTCAC
+TTACAACCCAAAGTGTGACTATCAATGGGGTAATCAGTGGTGTCAAATAGGAGGTTAACTGGGGACATCT
+AACTGTTTCTGCCTGGACTAATCTGCAAGAGTGTCTGGGGGAACAAAAAGCCTCTGTGACTTAGAAAGTA
+GGGGTAGGAGGGGAAAAGGTCTTCTACTTGGCTCAGATTATTTTTTTCCTCTAGTCCACTAAGAATACTG
+CGTTTTAAAATCATTTCCTTGATTCAAGTTCCTATTTCTCTTTATATTTTGTTTGTTTAAACCTCCTTTA
+CTAAAATTTACTCTTCTTTCTCTATAGCTTCCCAACGTGATCGCCTTTCTCCCATCCCCCTGTACTTTTT
+CCCCTTGTACTAAATTAACTCCTCAGGTGAGGAAAAACTTTTGAAGTGCAGAGTTCTGCTTCCTGCTATT
+AAAAGATGTAATTAAAACAGCAAAGGTAGCAAGCATTTATGAGGTCAGCGTAGGGTCTCAGTGTTCCCTA
+AGGGCCCTGTCAGTCATCCTGAATCCTGCCCCTACCTGGAAACCCATGTCGGTTTAGTAAGGAAAGTGTT
+ATACTTTTACTTTGCATGTTTCTCCTACTTCTTCCTTTCAGCTCTAACACTCTGAAACTACGATTACACA
+AAATAAAATAAAATAAAATAAAATAAAACAATAAAATGAAATAAAATTTAGGTTAACCAAAAGAAACTGG
+ATCCTCTATTTCTAGTTATCAGAAGGAAATTTACAAATTTCTTATTTCCATTGCTTTATTCTCTTAAATG
+CTTTCTCTATTATTGCTAAATAAATAGAGATCTCTCACTTTTTCTACCTGTCTCAACCCTCATCAGGTAC
+TTGTGAAAAAATCTCACTCTGATTATTCTCACACACGCAGAAAGTGTTTGGTTCTTCTATGGCTATCTGG
+AGCCTAGGTTAAAAAATTATGCCTATGTATGATTATAGAGGTAAGAGGGATAAAATTTAAGTATTTTCTT
+TTTATATTCATTCCTCTGTAAAAAA
+#+END_SRC
+
+* Informace o SNP mutacích
+V databázi dbSNP vyhledejte informace o mutaci způsobující srpkovitou anémii (využijte RS identifikátor z předchozího úkolu).
+
+** Ověřte patogenicitu v databázi Clinvar.
+Pathogenic, Hb SS disease: https://www.ncbi.nlm.nih.gov/clinvar/variation/15333/
+** Povšimněte si rozdílných pozic v různých verzích genomových map.
+** V jakém regionu lidského genomu se mutace nachází?
+11p15.4
+
+* Porovnání textových vyhledávacích systémů
+Vyhledejte záznam o proteinu beta-globin (Homo sapiens hemoglobin, beta, zkratka HBB) s použitím vyhledávacího systému GQuery.
+
+** Prohlédněte si seznam získaných výsledků. Nalezněte záznam spojený s mutací beta-globinu pro nemoc alpha-thalassemia v databázi OMIM.
+https://omim.org/entry/604131
+
+* Informace o genomových projektech
+V databázi Genomes OnLine Database (GOLD) zjistěte informace o dokončených a probíhajících genomových projektech.
+
+** Kolik bakteriálních a eukaryotických genomů bylo dosud osekvenováno a publikováno?
+Bakterie: 14,863, eukarya: 19,163
+
+* Vizualizace struktur molekul
+V největší strukturní databázi PDB hledejte informace o proteinu beta-globin.
+
+** V databázi PDB najděte článek popisující lidský beta-globin (tip: PDB-101, human hemoglobin). Podívejte se na animaci ukazující rozdíl mezi okysličenou a neokysličenou verzí. V článku nalezněte odkazy na PDB záznamy s okysličenou a neokysličenou verzí a také na verzi s genovou mutací způsobující srpkovitou anémii.
+https://www.rcsb.org/structure/2hhb
+
+https://www.rcsb.org/structure/1hho
+
+https://www.rcsb.org/structure/2hbs
+** Srovnejte rozlišení a R-faktory výše nalezených struktur. Kterou ze struktur lze považovat za nejkvalitnější.
+2HHB - R-value 0.160, resolution 1.74 \AA
+** Stáhněte pdb soubor libovolné struktury.
+** Stáhněte sekvenci ve formátu FASTA. Použijte staženou sekvenci pro vyhledání struktury Beta-Globinu (tip: advanced search).
+e.g. http://www.rcsb.org/structure/3W4U
+** Vizualizujte jeden z těchto proteinů prostřednictvím nástroje / apletu JsMol.
+https://chemapps.stolaf.edu/jmol/jmol.php?pdbid=3W4U
+** Vyzkoušejte si různá zobrazení vybrané struktury.
+** Uložte si některá zobrazení ve formátu PNG.
+
+* Databáze PDBSum
+V databázi PDBSum vyhledejte strukturu 2HHB.
+
+** Prohlédněte si Ramachandrův diagram. Jedná se o dobře definovanou strukturu? Srovnejte s jinými strukturami (např. 1CHR).
+#+BEGIN_SRC text
+2HHB
+Main-chain bond angles          -0.58*
+OVERALL AVERAGE                 -0.07
+vs
+1CHR
+Main-chain bond angles          -3.27**
+OVERALL AVERAGE                 -1.23**
+#+END_SRC
+** V záložce Proteins si prohlédněte informace o sekundární struktuře. Jaké z nich můžeme vyvodit závěry?
+#+BEGIN_SRC text
+1  1.10.490.10 = Mainly Alpha  Orthogonal Bundle
+#+END_SRC
+** Jaké další informace lze dohledat v PDBSum?
+Prvky a vlastnosti sekundární a terciární struktury proteinu
+
