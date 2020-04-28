@@ -1,4 +1,4 @@
-% Created 2020-03-19 Thu 14:10
+% Created 2020-03-24 Tue 13:27
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8x]{inputenc}
@@ -30,7 +30,7 @@
 \maketitle
 
 \section{Identifikace otevřeného čtecího rámce}
-\label{sec:org3b569d0}
+\label{sec:orgbdffc33}
 Prostřednictvím nástroje \href{https://www.ncbi.nlm.nih.gov/orffinder/}{ORF Finder} vyhledejte nejdelší otevřený rámec (ORF) na
 genomové sekvenci bakteriofágu 3A ze souboru \href{./bacteriophage\_3A.txt}{bacteriophage\(_{\text{3A.txt}}\)}. Protein
 kódovaný daným ORF porovnejte prostřednictvím blastp s proteiny dostupnými v
@@ -49,7 +49,7 @@ analýzy blastp - lze spustit přímo z nástroje ORF Finder)?
 \end{enumerate}
 
 \section{Změna otevřeného čtecího rámce vlivem mutace - Single nucleotide polymorphism (SNP)}
-\label{sec:orgb4061d2}
+\label{sec:orga5153e3}
 Mutace protein-kódující sekvence může změnit otevřený čtecí rámec (vznik /
 poškození na start / stop kodónu). Jedním z mnoha příkladů může být varianta
 hemoglobinu nazývaná \emph{Constant Spring}. Tato varianta byla poprvé objevena na
@@ -71,7 +71,7 @@ Spring}. Použijte nástroj \href{https://www.ncbi.nlm.nih.gov/orffinder/}{ORF F
 \end{enumerate}
 
 \section{Predikce genů založená na analýze sekvence a sekvenčních signálů}
-\label{sec:org3ab26c2}
+\label{sec:orgaa22ef8}
 Sekvenční analýza může poskytnout relevantní informace využitelné pro predikci
 genů. Pro řešení následujích úloh využijte sadu nástrojů zvanou \href{http://emboss.bioinformatics.nl}{EMBOSS
 toolbox}. Experimentování provádějte, není-li uvedeno jinak, na nukleotidové
@@ -102,7 +102,7 @@ ATTAAA. Jak často se v sekvenci vyskytují?
 \end{enumerate}
 
 \section{Identifikace strukturních genů pomocí aplikace GeneMark}
-\label{sec:org0bfb85d}
+\label{sec:orgbc89d3e}
 V části bakteriální sekvence \href{./heliobacillus\_mobilis.txt}{Heliobacillus mobilis} proveďte prostřednictvím
 aplikace \href{http://exon.biology.gatech.edu/gmchoice.html}{GeneMark} vyhledání strukturních genů. Používejte výchozí nastavení
 vstupního formuláře, ve kterém změňte druh na "Bacillus\(_{\text{subtilis}}\)\(_{\text{168}}\)" (položka
@@ -135,8 +135,15 @@ predikovaného pomocí GeneMark)?
 \end{enumerate}
 \end{enumerate}
 
+(GeneMark na přiložené adrese \url{http://exon.biology.gatech.edu/} nefunguje,
+používám \url{http://opal.biology.gatech.edu/GeneMark/gm.cgi})
+
+\begin{center}
+\includegraphics[width=1.2\linewidth]{./bif-5-genemark.png}
+\end{center}
+
 \section{Predikce operonů}
-\label{sec:org9585023}
+\label{sec:org5ce5dad}
 Operony jsou sekvencí nukleotidů, resp. řadou po sobě jdoucích genů v
 bakteriálním chromozomu, které mají společný promotor a jsou regulovány
 společným operátorem a exprimovány najednou. Tyto geny kódují většinou enzymy

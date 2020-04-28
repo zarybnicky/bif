@@ -78,6 +78,12 @@ vstupního formuláře, ve kterém změňte druh na "Bacillus_subtilis_168" (pol
    2. 10 výskytů
    3. pozice RBS na 582, 6188, 7126, 8821, 12869
 
+(GeneMark na přiložené adrese http://exon.biology.gatech.edu/ nefunguje,
+používám http://opal.biology.gatech.edu/GeneMark/gm.cgi)
+
+#+attr_latex: :width 1.2\linewidth
+[[./bif-5-genemark.png]]
+
 * Predikce operonů
 Operony jsou sekvencí nukleotidů, resp. řadou po sobě jdoucích genů v
 bakteriálním chromozomu, které mají společný promotor a jsou regulovány

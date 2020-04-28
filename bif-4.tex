@@ -1,4 +1,4 @@
-% Created 2020-03-19 Thu 13:03
+% Created 2020-03-24 Tue 14:37
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8x]{inputenc}
@@ -30,7 +30,7 @@
 \maketitle
 
 \section{Viacnásobné zarovnanie sekvencie cytochromu C a základná fylogenetická analýza}
-\label{sec:orga80918d}
+\label{sec:org9aec594}
 Stiahnite si aminokyselinové sekvencie nasledovných organizmov z \href{http://www.ncbi.nlm.nih.gov/protein/}{NCBI} a
 uložte ich do jedného multifasta súboru:
 
@@ -94,7 +94,10 @@ Outgroup.
 \item Zhoduje sa topológia stromov vytvorených pomocou MP a NJ? V čom sa líšia?
 Diskutujte s Vašimi susedmi výsledky.
 \begin{itemize}
-\item Výsledné stromy jsou shodné.
+\item Původně jsem psal, že stromy jsou stejně, ale to musela být chyba. "Original
+tree" se liší značně - \emph{Canis lupus} je podle MP nejméně podobný
+ostatním. "Bootstrap consensus tree" už je podobnější, ale pořád se liší ve
+stromu kopytnatců, kde prase je blíže buď koni (v MP), nebo turovi (v NJ).
 \end{itemize}
 \item Vypátrajte české/slovenské názvy skúmaných organizmov. Korešponduje vzniknutý
 fylogenetický strom s ich fenotypom?
@@ -104,8 +107,12 @@ ptákům (zebřička a kur) než člověku nebo šimpanzovi.
 \end{itemize}
 \end{itemize}
 
+\begin{center}
+\includegraphics[width=1.2\linewidth]{./bif-4-cytotree.png}
+\end{center}
+
 \section{Fylogenetická analýza človeka s príbuznými druhmi}
-\label{sec:orgd3e96b3}
+\label{sec:org76a6dc4}
 Zostavte si jednoduchý dataset (multifasta) pozostávajúci z DNA sekvencií
 mitochondrial d-loop nasledovných druhov, ktoré si stiahnite z \href{http://www.ncbi.nlm.nih.gov/nuccore/}{NCBI}. Ako popis
 sekvencií v multifasta súbore použite české/slovenské názvy organizmov.
@@ -147,6 +154,9 @@ je najpodobnejšie človeku? Majú na základe získaného stromu neandertálec 
 \begin{itemize}
 \item Stejnou topologii nemají, ML a NJ se liší v zařazení orangutana (na společné
 větvi se šimpanzem, nebo s člověkem/neandertálcem).
+\item Bootstrapová hodnota ukazuje, kolikrát byl takový podstrom sestavený při
+převzorkování z X iterací - vynechání jednoho sloupce a sestavení stromu z
+upravených dat.
 \item Nejpodobnější člověku je neandertálec, nejspíše přímého předka mají.
 \end{itemize}
 \end{itemize}

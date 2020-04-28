@@ -62,7 +62,10 @@ při zarovnání sekvence oproti sobě samé.
 
 /Otázky:/
 - Co vyjadřuje parametr E?
-  - počet výskytů takové shody u N náhodných sekvencí pro E(N).
+  - Očekávaný počet shod v databázi o N sekvencích (děleno N). Hodnota blížící
+    se 0 odpovídá významné shodě, hodnota blížící se 1 znamená buď nevýznamnou
+    (malou) shodu, nebo shodu krátké sekvence s databázi dlouhých sekvencí, kde
+    by byla běžná čistě pravděpodobnostně.
 - Jaké míry identity a parametru E je obvykle dosahováno u náhodných
   nukleotidových sekvencí?
   - Identita 0.3 globálně
@@ -126,6 +129,14 @@ podobnosti však dopadly neúspěšně.
   1. Michael - 99% se shoduje s "Escherichia coli strain Mach1 plasmid pSS1129, complete
      sequence" s $E(1) = 3e-117$
   2. Mark - 66% se shoduje s "Gallus gallus GATA binding protein 1" s $E(1) = 0$ (úplná shoda)
+  3. Na takovou otázku se špatně odpovídá - ani jedna není dobrá pro klonování
+     dinosaurů. Michaelova sekvence je DNA bakterie E. coli a tudíž naprosto
+     irelevantní, Markova sekvence je asi relevantnější, obsahuje jeden
+     konkrétní gen, který se mohl vyskytovat i v DNA dinosaura, pokud uvažujeme
+     příbuznost /Gallus gallus/, ale ani jedna z nich není sekvence, která by
+     pomohla rekonstruovat DNA dinosaura. Musím tedy asi odpovědět, že Markova
+     sekvence je lepší, GATA1 protein, ač ve verzi Gallus gallus, je v
+     přítomnosti dalších fragmentů DNA užitečnější.
 - Mark zabudoval do své sekvence také své jméno MARK. Nalezněte toto jméno v
   sekvenci.
   - Je součástí "DinoDNA_1_ORF1  Translation of DinoDNA in frame 1, ORF 1,
@@ -153,8 +164,8 @@ SMPPPPPPPAAAPPQSDALYALGPVVLSGHFLPFGNSGGFFGGGAGGYTAPPGLSPQI
 
 /Otázky:/
 - Shodují se výsledky pro všechny alternativy vstupní sekvence? Zdůvodněte proč.
-  - Výsledky BLAST pro původní a komplementární sekvence (ať už reverzní nebo
-    ne) se liší. BLAST zřejmě hledá pouze sekvence, ať už reverzní nebo ne. Na
-    začátku sekvence KRAS je komplementární řetězec nosný pro GTPase, kdežto
-    původní nekomplementární řetězec nosný není a obsahuje pouze promotor genu
-    OATP-B.
+  - Výsledky BLAST jsou shodné pro původní a reverse-complement DNA (GTPase), stejně tak
+    pro reverse a complement DNA (OATP-B promotor)
+  - DNA čteme v pořadí 5-3 a reverse nebo complement verze jsou obě v 3-5
+    pořadí, BLAST tedy zřejmě hledá i normální i reverse-complement verze, aspoň
+    pro blastn.

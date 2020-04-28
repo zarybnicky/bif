@@ -1,4 +1,4 @@
-% Created 2020-03-19 Thu 12:05
+% Created 2020-03-24 Tue 14:22
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8x]{inputenc}
@@ -32,14 +32,14 @@
 
 
 \section{Dotlet}
-\label{sec:org8fee185}
+\label{sec:org7bdc741}
 Seznamte se s programem \href{https://dotlet.vital-it.ch/}{Dotlet}. Zadejte programu různé (např. náhodné) vstupní
 sekvence (\href{http://www.bioinformatics.org/sms2/random\_dna.html}{nukleotidů} / \href{http://www.bioinformatics.org/sms2/random\_protein.html}{aminokyselinami}) a vyzkoušejte si vliv vstupních
 parametrů (jako jsou typ skórovací matice nebo velikost posuvného okýnka) na
 výsledek dotplot grafu.
 
 \subsection{Region s nízkou složitostí}
-\label{sec:orga6c95d3}
+\label{sec:org97af557}
 Tento příklad ukazuje vliv regionu s nízkou složitostí na výsledek dotplot
 grafu.
 
@@ -64,7 +64,7 @@ spodní části okna podrobnější výpis sekvence.
 \end{itemize}
 
 \subsection{Opakování}
-\label{sec:orgf619ef6}
+\label{sec:org9a8af80}
 Tento příklad ukazuje zajímavé vlastnosti, kterých si můžete všimnout
 při zarovnání sekvence oproti sobě samé.
 
@@ -93,9 +93,9 @@ opakování.
 \end{itemize}
 
 \section{Dynamické programování}
-\label{sec:orga86e45f}
+\label{sec:orge6d4ffe}
 \subsection{Míra identity u náhodných biologických sekvencí}
-\label{sec:org6549d52}
+\label{sec:orgc6dfdd0}
 \begin{enumerate}
 \item Vytvořte si 2 náhodné sekvence \href{http://www.bioinformatics.org/sms2/random\_dna.html}{nukleotidů} a \href{http://www.bioinformatics.org/sms2/random\_protein.html}{aminokyselinami}.
 \item Dále budeme pracovat s online nástroji pro globální (\href{https://www.ebi.ac.uk/Tools/psa/emboss\_needle/nucleotide.html}{Needle Nucl} a \href{https://www.ebi.ac.uk/Tools/psa/emboss\_needle/}{Needle
@@ -113,7 +113,10 @@ LALIGN).
 \begin{itemize}
 \item Co vyjadřuje parametr E?
 \begin{itemize}
-\item počet výskytů takové shody u N náhodných sekvencí pro E(N).
+\item Očekávaný počet shod v databázi o N sekvencích (děleno N). Hodnota blížící
+se 0 odpovídá významné shodě, hodnota blížící se 1 znamená buď nevýznamnou
+(malou) shodu, nebo shodu krátké sekvence s databázi dlouhých sekvencí, kde
+by byla běžná čistě pravděpodobnostně.
 \end{itemize}
 \item Jaké míry identity a parametru E je obvykle dosahováno u náhodných
 nukleotidových sekvencí?
@@ -130,7 +133,7 @@ sekvencí aminokyselin?
 \end{itemize}
 
 \subsection{Objevení podobnosti mezi onkogeny}
-\label{sec:org6a846df}
+\label{sec:orgba185a2}
 Russell Doolittle byl průkopníkem v oblasti algoritmů pro analýzu sekvencí v
 druhé polovině 70 a první polovině 80 let. Doolittle používal tehdejší databáze
 biologických sekvencí pro své experimenty s geny a hledání jejich funkce na
@@ -181,9 +184,9 @@ překlad jednoho genu v protein (jeden start/stop kodon)
 \end{itemize}
 
 \section{BLAST}
-\label{sec:org3667f81}
+\label{sec:org1f165fa}
 \subsection{Hledání původu DinoDNA}
-\label{sec:org3f17fa2}
+\label{sec:org273d1c2}
 \begin{enumerate}
 \item Film Michael Crichtona o klonování dinosaurů, Jurský park, ukazuje domnělou
 DNA sekvenci dinosaura. Identifikujte skutečný zdroj \href{data/dino\_dna1.fasta}{této} DNA sekvence s
@@ -200,6 +203,14 @@ tohoto filmu z názvem The Lost World. Identifikujte zdroj \href{data/dino\_dna2
 \item Michael - 99\% se shoduje s "Escherichia coli strain Mach1 plasmid pSS1129, complete
 sequence" s \(E(1) = 3e-117\)
 \item Mark - 66\% se shoduje s "Gallus gallus GATA binding protein 1" s \(E(1) = 0\) (úplná shoda)
+\item Na takovou otázku se špatně odpovídá - ani jedna není dobrá pro klonování
+dinosaurů. Michaelova sekvence je DNA bakterie E. coli a tudíž naprosto
+irelevantní, Markova sekvence je asi relevantnější, obsahuje jeden
+konkrétní gen, který se mohl vyskytovat i v DNA dinosaura, pokud uvažujeme
+příbuznost \emph{Gallus gallus}, ale ani jedna z nich není sekvence, která by
+pomohla rekonstruovat DNA dinosaura. Musím tedy asi odpovědět, že Markova
+sekvence je lepší, GATA1 protein, ač ve verzi Gallus gallus, je v
+přítomnosti dalších fragmentů DNA užitečnější.
 \end{enumerate}
 \item Mark zabudoval do své sekvence také své jméno MARK. Nalezněte toto jméno v
 sekvenci.
@@ -219,7 +230,7 @@ SMPPPPPPPAAAPPQSDALYALGPVVLSGHFLPFGNSGGFFGGGAGGYTAPPGLSPQI
 \end{minted}
 
 \subsection{Hledání komplementárních sekvencí}
-\label{sec:org314f798}
+\label{sec:orgefe9589}
 \begin{enumerate}
 \item S využitím databáze \href{http://www.ncbi.nlm.nih.gov/genbank/}{NCBI GenBank} si stáhněte sekvenci nukleotidů libovolného
 lidského genu napr. KRAS (postačí prvních 1000 znaků genu)
@@ -238,11 +249,11 @@ sekvencí
 \begin{itemize}
 \item Shodují se výsledky pro všechny alternativy vstupní sekvence? Zdůvodněte proč.
 \begin{itemize}
-\item Výsledky BLAST pro původní a komplementární sekvence (ať už reverzní nebo
-ne) se liší. BLAST zřejmě hledá pouze sekvence, ať už reverzní nebo ne. Na
-začátku sekvence KRAS je komplementární řetězec nosný pro GTPase, kdežto
-původní nekomplementární řetězec nosný není a obsahuje pouze promotor genu
-OATP-B.
+\item Výsledky BLAST jsou shodné pro původní a reverse-complement DNA (GTPase), stejně tak
+pro reverse a complement DNA (OATP-B promotor)
+\item DNA čteme v pořadí 5-3 a reverse nebo complement verze jsou obě v 3-5
+pořadí, BLAST tedy zřejmě hledá i normální i reverse-complement verze, aspoň
+pro blastn.
 \end{itemize}
 \end{itemize}
 \end{document}

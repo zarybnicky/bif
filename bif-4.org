@@ -52,11 +52,17 @@ Outgroup.
 
 - Zhoduje sa topológia stromov vytvorených pomocou MP a NJ? V čom sa líšia?
   Diskutujte s Vašimi susedmi výsledky.
-  - Výsledné stromy jsou shodné.
+  - Původně jsem psal, že stromy jsou stejně, ale to musela být chyba. "Original
+    tree" se liší značně - /Canis lupus/ je podle MP nejméně podobný
+    ostatním. "Bootstrap consensus tree" už je podobnější, ale pořád se liší ve
+    stromu kopytnatců, kde prase je blíže buď koni (v MP), nebo turovi (v NJ).
 - Vypátrajte české/slovenské názvy skúmaných organizmov. Korešponduje vzniknutý
   fylogenetický strom s ich fenotypom?
   - Ne úplně - kopytnatci jsou ve výsledné topologii správně blízko, ale jsou blíže
     ptákům (zebřička a kur) než člověku nebo šimpanzovi.
+
+#+attr_latex: :width 1.2\linewidth
+[[./bif-4-cytotree.png]]
 
 * Fylogenetická analýza človeka s príbuznými druhmi
 Zostavte si jednoduchý dataset (multifasta) pozostávajúci z DNA sekvencií
@@ -94,4 +100,7 @@ Sekvencie analyzujte pomocou programu MEGA nasledovne:
   človek dnešného typu priameho spoločného predka?
   - Stejnou topologii nemají, ML a NJ se liší v zařazení orangutana (na společné
     větvi se šimpanzem, nebo s člověkem/neandertálcem).
+  - Bootstrapová hodnota ukazuje, kolikrát byl takový podstrom sestavený při
+    převzorkování z X iterací - vynechání jednoho sloupce a sestavení stromu z
+    upravených dat.
   - Nejpodobnější člověku je neandertálec, nejspíše přímého předka mají.
