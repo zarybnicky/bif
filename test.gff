@@ -1,0 +1,9 @@
+##gff-version 3
+##source-version rtracklayer 1.46.0
+##date 2020-02-11
+chr1    pqsfinder   G_quartet   10  20  30  +   .
+chr1    pqsfinder   G_quartet   10  30  30  +   .
+chr1    pqsfinder   G_quartet   10  40  30  +   .
+chr1    pqsfinder   G_quartet   20  30  30  +   .
+chr1    pqsfinder   G_quartet   20  40  30  +   .
+chr1    pqsfinder   G_quartet   30  40  30  +   .
